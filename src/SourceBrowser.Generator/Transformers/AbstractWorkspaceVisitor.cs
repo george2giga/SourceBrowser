@@ -48,7 +48,7 @@ namespace SourceBrowser.Generator.Transformers
             }
             else
             {
-                throw new InvalidOperationException("Unhandled: " + nameof(projectItem));
+                throw new InvalidOperationException("Unhandled: " + projectItem.Name);
             }
         }
 

@@ -16,7 +16,7 @@ namespace SourceBrowser.Generator.Model
 
         public string Name { get; set; }
 
-        public string RelativePath { get; }
+        public string RelativePath { get; set; }
 
         public int NumberOfLines { get; set; }
 
