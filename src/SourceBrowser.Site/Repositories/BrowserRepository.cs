@@ -141,7 +141,7 @@
                 Repos = repos,
                 Path = repoPath
             };
-            userData.UseLiveData();
+            //userData.UseLiveData();
 
             return userData;
         }
@@ -216,7 +216,7 @@
                 Solutions = solutionNames,
                 ParentUserName = userName
             };
-            repoData.UseLiveData();
+            //repoData.UseLiveData();
 
             return repoData;
         }

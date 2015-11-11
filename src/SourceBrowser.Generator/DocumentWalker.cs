@@ -166,7 +166,7 @@ namespace SourceBrowser.Generator
                 tokenModel.Link = localLink;
             }
             //Otherwise, we try to link to the .Net Reference source
-            else if (_refsourceLinkProvider.Assemblies.Contains(symbol.ContainingAssembly.Identity.Name)
+            else if (symbol.ContainingAssembly != null && _refsourceLinkProvider.Assemblies.Contains(symbol.ContainingAssembly.Identity.Name)
                 && !(symbol is INamespaceSymbol))
             {
                 var referenceLink = new UrlLink();

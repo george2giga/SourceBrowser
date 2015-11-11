@@ -1,4 +1,6 @@
-﻿
+﻿@model SourceBrowser.Site.Models.StashCredentialsModel
+
+
 @{
     ViewBag.Title = "Index";
 }
@@ -11,12 +13,43 @@
         <h5 style="color:red">@ViewBag.Error</h5>
     }
 </div>
-
-<form method="post" action="~/Upload/Submit" style="margin:0px 0px 150px 0px" class="bs-example bs-example-form" role="form">
-    <div style="margin:0 auto;max-width:1000px;" class="input-group input-group-lg" >
-        <input name="githubUrl" style="max-width:100%" type="text" class="form-control" placeholder="http://github.com/JoshVarty/SampleProject" autofocus>
+@using (Html.BeginForm("Submit", "Upload", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<form method="post" action="~/Upload/Submit" style="margin: 0px 0px 150px 0px" class="bs-example bs-example-form" role="form">*@
+    <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg" >
+        @*<input name="githubUrl" style="max-width: 100%" type="text" class="form-control" placeholder="http://github.com/JoshVarty/SampleProject" autofocus>*@
+        @Html.TextBoxFor(x=>x.StashRepositoryUrl, new { @class = "form-control", style="max-width:100%", placeholder="enter the repository url here"})
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Go!</button>
         </span>
     </div>
-</form>
+    <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
+        @Html.ValidationMessageFor(m => m.StashRepositoryUrl, "", new { @class = "text-danger" })
+    </div>
+        <br/>
+        <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
+            <h4>Stash credentials</h4>
+        </div>
+        <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
+            @Html.TextBoxFor(x => x.Username, new {@class = "form-control", placeholder = "username"})
+            <br />
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+        <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
+            @Html.PasswordFor(x => x.Password, new {@class = "form-control", placeholder = "password"})
+            <br/>
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+        <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
+            @*<span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go!</button>
+        </span>*@
+        </div>
+    @*</form>*@
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
