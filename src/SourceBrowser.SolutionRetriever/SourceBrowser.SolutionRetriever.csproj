@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GitHubInformationRetriever.cs" />
+    <Compile Include="StashSolutionRetriever.cs" />
     <Compile Include="GitHubSolutionRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -49,10 +49,11 @@ namespace SourceBrowser.Generator.DocumentWalkers
             get { return CSharpDelimiters.LOCAL_VARIABLE; }
         }
 
-
         public string GetFullName(SyntaxToken token)
         {
-            return token.CSharpKind().ToString();
+            return token.Text;
+
+            //return token.CSharpKind().ToString();
         }
 
         public bool IsIdentifier(SyntaxToken token)

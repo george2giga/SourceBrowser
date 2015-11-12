@@ -2,7 +2,7 @@
 
 namespace SourceBrowser.Generator.DocumentWalkers
 {
-    interface IWalkerUtils
+    public interface IWalkerUtils
     {
         string OtherTokenTypeName { get; }
         string KeywordTokenTypeName { get; }
