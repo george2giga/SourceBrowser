@@ -209,7 +209,9 @@
             {
                 Username = userName,
                 Repos = repos,
-                Path = repoPath
+                Path = repoPath,
+                AvatarURL = "csharp_purple_avatar.png"
+                
                 //TODO: Add avatar url
             };
             //userData.UseLiveData();

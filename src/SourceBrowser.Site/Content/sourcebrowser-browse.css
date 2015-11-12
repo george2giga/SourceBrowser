@@ -58,6 +58,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     float: left;
     width: auto;
     margin-left: 20px;
+    margin-top: 15px;
 }
 
 .userBadge .clipped-text * {
@@ -77,6 +78,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .userDetail h3 {
     color: #333;
+    margin-left: 10px;
 }
 
 .userDetail img {

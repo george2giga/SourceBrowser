@@ -27,7 +27,7 @@
         <div class="row">
             <aside class="col-xs-4" id="userInfo">
                 <section class="userDetail">
-                    <img src="@Model.AvatarURL" />
+                    <img src="@Url.Content("~/content/images/" + Model.AvatarURL)" />
                     <h3>@Model.Username</h3>                  
                 </section>
             </aside>

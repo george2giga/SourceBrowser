@@ -21,10 +21,9 @@
             {
                 <li class="hide-bullet wrapping-list">
                     <a class="userBadge" href="~/Browse/@user.Username">
-                        <img src="@user.AvatarURL" />
+                        <img src="@Url.Content("~/content/images/"+user.AvatarURL)" />
                         <div class="text clipped-text">
                             <h3>@user.Username</h3>
-                            
                             @*<p class="minor">@user.Username</p>*@
                         </div>
                     </a>
