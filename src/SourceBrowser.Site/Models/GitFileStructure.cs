@@ -1,10 +1,6 @@
 ﻿namespace SourceBrowser.Site.Models
 {
-    using System;
-
-    using Newtonsoft.Json.Linq;
-
-    public class GithubFileStructure
+   public class GitFileStructure
     {
         public string FileName { get; set; }
 

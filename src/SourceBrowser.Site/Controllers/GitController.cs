@@ -10,7 +10,7 @@ namespace SourceBrowser.Site.Controllers
     using System;
     using System.Linq;
 
-    public class StashController : Controller
+    public class GitController : Controller
     {
         // GET: Upload
         public ActionResult Index()
@@ -18,7 +18,7 @@ namespace SourceBrowser.Site.Controllers
             return View();
         }
 
-        public ActionResult Submit(StashCredentialsModel model)
+        public ActionResult Submit(GitCredentialsModel model)
         {
             if (ModelState.IsValid)
             {
@@ -26,12 +26,12 @@ namespace SourceBrowser.Site.Controllers
                 ModelState.AddModelError("", "Invalid fields");
             }
             // If someone navigates to submit directly, just send 'em back to index
-            if (string.IsNullOrWhiteSpace(model.StashRepositoryUrl))
+            if (string.IsNullOrWhiteSpace(model.RepositoryUrl))
             {
                 return View("Index");
             }
 
-            var retriever = new StashSolutionRetriever(model.StashRepositoryUrl);
+            var retriever = new StashSolutionRetriever(model.RepositoryUrl);
             if (!retriever.IsValidUrl())
             {
                 ViewBag.Error = "Make sure that the provided path points to a valid GitHub repository.";

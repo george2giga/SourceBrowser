@@ -4,7 +4,7 @@ using LibGit2Sharp;
 
 namespace SourceBrowser.SolutionRetriever
 {
-    public class GitHubRetriever
+    public class GitRetriever
     {
         private string _url;
         private Guid guid = Guid.NewGuid();
@@ -12,7 +12,7 @@ namespace SourceBrowser.SolutionRetriever
         public string UserName { get; set; }
         public string RepoName { get; set; }
 
-        public GitHubRetriever(string url)
+        public GitRetriever(string url)
         {
             if (!(url.StartsWith("https://") || url.StartsWith("http://")))
                 url = "https://" + url;
@@ -28,8 +28,6 @@ namespace SourceBrowser.SolutionRetriever
 
         public bool IsValidUrl()
         {
-            if (!_url.Contains("github.com"))
-                return false;
             if (String.IsNullOrWhiteSpace(UserName))
                 return false;
             if (String.IsNullOrWhiteSpace(RepoName))

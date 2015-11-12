@@ -45,6 +45,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .userBadge h3 {
     color: #333;
+    height: 28px;
 }
 .userBadge img {
     float: left;

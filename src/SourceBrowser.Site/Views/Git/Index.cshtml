@@ -1,4 +1,4 @@
-﻿@model SourceBrowser.Site.Models.StashCredentialsModel
+﻿@model SourceBrowser.Site.Models.GitCredentialsModel
 
 @{
     ViewBag.Title = "Upload";
@@ -16,20 +16,20 @@
         <h5 style="color:red">@ViewBag.Error</h5>
     }
 </div>
-@using (Html.BeginForm("Submit", "Stash", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Submit", "Git", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @*<form method="post" action="~/Upload/Submit" style="margin: 0px 0px 150px 0px" class="bs-example bs-example-form" role="form">*@
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
         @*<input name="githubUrl" style="max-width: 100%" type="text" class="form-control" placeholder="http://github.com/JoshVarty/SampleProject" autofocus>*@
-        @Html.TextBoxFor(x => x.StashRepositoryUrl, new { @class = "form-control", style = "max-width:100%", placeholder = "enter the repository url here" })
+        @Html.TextBoxFor(x => x.RepositoryUrl, new { @class = "form-control", style = "max-width:100%", placeholder = "enter the repository url here" })
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Go!</button>
         </span>
     </div>
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        @Html.ValidationMessageFor(m => m.StashRepositoryUrl, "", new { @class = "text-danger" })
+        @Html.ValidationMessageFor(m => m.RepositoryUrl, "", new { @class = "text-danger" })
     </div>
     <br />
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">

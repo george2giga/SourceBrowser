@@ -4,7 +4,7 @@
 
     using Newtonsoft.Json.Linq;
 
-    public class GithubSolutionStructure
+    public class GitSolutionStructure
     {
         public string Name { get; set; }
 
@@ -12,7 +12,7 @@
 
         public string RelativeRootPath { get; set; }
 
-        public GithubRepoStructure ParentRepo { get; set; }
+        public GitRepoStructure ParentRepo { get; set; }
 
         public override string ToString()
         {

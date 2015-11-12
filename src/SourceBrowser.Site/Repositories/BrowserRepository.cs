@@ -119,17 +119,17 @@
         /// <returns>
         /// All Github users.
         /// </returns>
-        public static List<GithubUserStructure> GetAllGithubUsers()
+        public static List<GitUserStructure> GetAllGithubUsers()
         {
             // If, for some reason, we have no data at all, just return an empty list
             if (!Directory.Exists(StaticHtmlAbsolutePath))
             {
-                return new List<GithubUserStructure>();
+                return new List<GitUserStructure>();
             }
 
             // Otherwise, find them all
             var directories = Directory.GetDirectories(StaticHtmlAbsolutePath);
-            var users = new List<GithubUserStructure>(directories.Length);
+            var users = new List<GitUserStructure>(directories.Length);
             foreach (var directoryName in directories)
             {
                 var userName = Path.GetFileName(directoryName);
@@ -144,7 +144,7 @@
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        internal static GithubUserStructure GetUserStructure(string userName)
+        internal static GitUserStructure GetUserStructure(string userName)
         {
             var userDataFile = Path.Combine(StaticHtmlAbsolutePath, userName, "user.data");
             // Fetch GitHub data if there is none
@@ -156,7 +156,7 @@
             }
             try
             {
-                return FileUtilities.DeserializeData<GithubUserStructure>(userDataFile);
+                return FileUtilities.DeserializeData<GitUserStructure>(userDataFile);
             }
             catch
             {
@@ -184,15 +184,15 @@
         /// </summary>
         /// <param name="userName">The username.</param>
         /// <returns>The github structure.</returns>
-        private static GithubUserStructure SetUpUserStructure(string userName)
+        private static GitUserStructure SetUpUserStructure(string userName)
         {
             var repoPath = Path.Combine(StaticHtmlAbsolutePath, userName);
 
-            List<GithubRepoStructure> repos;
+            List<GitRepoStructure> repos;
             if (Directory.Exists(repoPath))
             {
                 var directories = Directory.GetDirectories(repoPath);
-                repos = new List<GithubRepoStructure>(directories.Length);
+                repos = new List<GitRepoStructure>(directories.Length);
                 foreach (var directory in directories)
                 {
                     var repoName = Path.GetFileName(directory);
@@ -202,16 +202,19 @@
             else
             {
                 // If, for some reason the directory doesn't exist, just supply an empty list
-                repos = new List<GithubRepoStructure>();
+                repos = new List<GitRepoStructure>();
             }
 
-            var userData = new GithubUserStructure()
+            var userData = new GitUserStructure()
             {
                 Username = userName,
                 Repos = repos,
                 Path = repoPath
+                //TODO: Add avatar url
             };
-            userData.UseLiveData();
+            //userData.UseLiveData();
+            //TODO: Replace with user data
+
 
             return userData;
         }
@@ -223,7 +226,7 @@
         /// <param name="userName"></param>
         /// <param name="repoName"></param>
         /// <returns></returns>
-        internal static GithubRepoStructure GetRepoStructure(string userName, string repoName)
+        internal static GitRepoStructure GetRepoStructure(string userName, string repoName)
         {
             var repoDataFile = Path.Combine(StaticHtmlAbsolutePath, userName, repoName, "repo.data");
             // Fetch GitHub data if there is none
@@ -235,7 +238,7 @@
             }
             try
             {
-                return FileUtilities.DeserializeData<GithubRepoStructure>(repoDataFile);
+                return FileUtilities.DeserializeData<GitRepoStructure>(repoDataFile);
             }
             catch
             {
@@ -264,24 +267,23 @@
         /// <param name="userName"></param>
         /// <param name="repoName"></param>
         /// <returns></returns>
-        private static GithubRepoStructure SetUpRepoStructure(string userName, string repoName)
+        private static GitRepoStructure SetUpRepoStructure(string userName, string repoName)
         {
             // Currently unused, might be useful at some point
             // var repoRoot = Path.Combine(StaticHtmlAbsolutePath, userName, repoName);
 
-            var repoData = new GithubRepoStructure()
+            var repoData = new GitRepoStructure()
             {
                 Name = repoName,
                 ParentUserName = userName
             };
-            repoData.UseLiveData();
 
             return repoData;
         }
 
-        internal static GithubSolutionStructure SetUpSolutionStructure(string userName, string repoName, string solutionName)
+        internal static GitSolutionStructure SetUpSolutionStructure(string userName, string repoName, string solutionName)
         {
-            var viewModel = new GithubSolutionStructure()
+            var viewModel = new GitSolutionStructure()
             {
                 Name = solutionName,
                 RelativePath = CreatePath(userName, repoName, solutionName),
@@ -292,9 +294,9 @@
             return viewModel;
         }
 
-        internal static GithubFileStructure SetUpFileStructure(string userName, string repoName, string path, string html) 
+        internal static GitFileStructure SetUpFileStructure(string userName, string repoName, string path, string html) 
         {
-            var viewModel = new GithubFileStructure
+            var viewModel = new GitFileStructure
             {
                 FileName = Path.GetFileName(path),
                 Directory = GetRelativeDirectory(path),

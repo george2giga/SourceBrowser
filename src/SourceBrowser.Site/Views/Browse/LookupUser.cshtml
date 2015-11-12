@@ -1,4 +1,5 @@
-﻿@model SourceBrowser.Site.Models.GithubUserStructure
+﻿@using LibGit2Sharp
+@model SourceBrowser.Site.Models.GitUserStructure
 
 @{
     ViewBag.Title = Model.Username;
@@ -27,12 +28,7 @@
             <aside class="col-xs-4" id="userInfo">
                 <section class="userDetail">
                     <img src="@Model.AvatarURL" />
-                    <h3>@Model.FullName</h3>
-                    <h4>@Model.Username</h4>
-                    @if (!String.IsNullOrEmpty(Model.BlogURL))
-                    {
-                        <p class="minor"><a href="@Model.BlogURL" target="_blank">@Model.BlogURL</a></p>
-                    }
+                    <h3>@Model.Username</h3>                  
                 </section>
             </aside>
 
@@ -40,7 +36,7 @@
             <article class="col-xs-8" id="main">
                 <section>
 
-                    <h2>Browsing @(String.IsNullOrEmpty(Model.FullName) ? Model.Username : Model.FullName)'s repositories.</h2>
+                    <h2>Browsing @(Model.Username)'s repositories.</h2>
                     <ul>
                         @foreach (var repo in Model.Repos)
                         {
@@ -51,27 +47,24 @@
                                             <h4>@repo.Name</h4>
                                         </div>
                                         <div class="col-xs-4">
-											@if (!String.IsNullOrEmpty(repo.language))
-											{
 												<p class="match-h-margin">
-													@repo.language, @repo.starsCount stars, @repo.forksCount forks
+													@repo.UploadTime.ToShortDateString()
 												</p>
-											}
                                         </div>
                                     </div>
                                     
-                                    <p>@repo.description</p>
+                                    @*<p>@repo.description</p>
 
                                     @if (!String.IsNullOrEmpty(repo.homepage))
                                     {
                                         <p class="minor">@repo.homepage</p>
-                                    }
+                                    }*@
                                 </a>
                             </li>
                         }
                     </ul>
                     
-                    <p>Or <a href="@Model.GitHubURL/?tab=repositories" target="_blank">view all @Model.FullName's repositories on github.</a></p>
+                    @*<p>Or <a href="@Model.GitHubURL/?tab=repositories" target="_blank">view all @Model.FullName's repositories on github.</a></p>*@
                 </section>
             </article>
         </div>

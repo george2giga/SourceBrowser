@@ -10,9 +10,14 @@
 
     // Drag-to-resize search results pane
     // Adapted from http://www.catchmyfame.com/2010/08/12/adjustable-columns-with-jquery/
-
-    var stopTwoLeft = parseInt($('#main-content').offset().left) + 300;
-    var stopTwoRight = parseInt($('#browser').offset().left) + $('#browser').width() - 200;
+    var stopTwoLeft = "";
+    var stopTwoRight = "";
+    if ($('#main-content').length> 0) {
+        stopTwoLeft = parseInt($('#main-content').offset().left) + 300;
+    }
+    if ($('#browser').length > 0) {
+        var stopTwoRight = parseInt($('#browser').offset().left) + $('#browser').width() - 200;
+    }
 
     $("#drag-handle").draggable({
         axis: 'x',
