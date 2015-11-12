@@ -9,15 +9,22 @@
     <article id="main-content">
         <h3>Browsing @Model.ParentRepo.ParentUserName's repository @Model.ParentRepo.Name.</h3>
         <p>
-			Use the <strong>search box</strong> or the <strong>tree view</strong> on the right,
-			or <a href="//github.com/@Model.ParentRepo.ParentUserName/@Model.ParentRepo.Name/" target="_blank">view @Model.ParentRepo.Name on GitHub.</a>
-		</p>
+            Use the <strong>search box</strong> or the <strong>tree view</strong> on the right to browse the solution.
+            @*or <a href="//github.com/@Model.ParentRepo.ParentUserName/@Model.ParentRepo.Name/" target="_blank">view @Model.ParentRepo.Name on GitHub.</a>*@
+        </p>
+        <p>
+            Documentation created in date @Model.ParentRepo.UploadTime.ToShortDateString()
+        </p>
 		@if (ViewBag.Readme != null)
 		{
-			<div id="readme">
-				<div id="readme-header">README.md</div>
-				<article>@Html.Raw(ViewBag.Readme)</article>
-			</div>
+			@*<div id="readme">
+			    <div id="readme-header">Info</div>
+                
+			    <article>@Html.Raw(ViewBag.Readme)</article>
+			    <article>
+			        This repository has been created in @Model.ParentRepo.UploadTime
+			    </article>
+			</div>*@
 		}
     </article>
     <div id="drag-handle"></div>

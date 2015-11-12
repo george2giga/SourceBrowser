@@ -275,7 +275,8 @@
             var repoData = new GitRepoStructure()
             {
                 Name = repoName,
-                ParentUserName = userName
+                ParentUserName = userName,
+                UploadTime = DateTime.Now
             };
 
             return repoData;
