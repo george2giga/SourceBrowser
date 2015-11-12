@@ -16,16 +16,14 @@
         <h5 style="color:red">@ViewBag.Error</h5>
     }
 </div>
-@using (Html.BeginForm("Submit", "Git", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Submit", "Git", FormMethod.Post, new { style = "margin: 0px 0px 150px 0px", role = "form", @class="bs-example bs-example-form" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @*<form method="post" action="~/Upload/Submit" style="margin: 0px 0px 150px 0px" class="bs-example bs-example-form" role="form">*@
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        @*<input name="githubUrl" style="max-width: 100%" type="text" class="form-control" placeholder="http://github.com/JoshVarty/SampleProject" autofocus>*@
         @Html.TextBoxFor(x => x.RepositoryUrl, new { @class = "form-control", style = "max-width:100%", placeholder = "enter the repository url here" })
         <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">Go!</button>
+            <button class="btn btn-success success" type="submit">Go!</button>
         </span>
     </div>
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
@@ -42,15 +40,8 @@
     </div>
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
         @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "password" })
-        <br />
         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
     </div>
-    <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        @*<span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Go!</button>
-            </span>*@
-    </div>
-    @*</form>*@
 }
 
 @section Scripts {

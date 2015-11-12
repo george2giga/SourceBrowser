@@ -5,7 +5,7 @@ namespace SourceBrowser.Site.Models
     public class GitCredentialsModel
     {
         [Required]
-        [Display(Name = "Stash repository")]
+        [Display(Name = "Repository")]
         public string RepositoryUrl { get; set; }
 
         [Required]

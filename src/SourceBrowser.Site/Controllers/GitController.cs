@@ -34,7 +34,7 @@ namespace SourceBrowser.Site.Controllers
             var retriever = new StashSolutionRetriever(model.RepositoryUrl);
             if (!retriever.IsValidUrl())
             {
-                ViewBag.Error = "Make sure that the provided path points to a valid GitHub repository.";
+                ViewBag.Error = "Make sure that the provided path points to a valid Git repository.";
                 return View("Index");
             }
 
