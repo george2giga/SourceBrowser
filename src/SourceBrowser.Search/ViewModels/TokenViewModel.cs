@@ -8,12 +8,12 @@ namespace SourceBrowser.Search.ViewModels
 {
     public struct TokenViewModel
     {
-        public string Id { get; } 
+        public string Id { get; set; }
 
-        public string Path { get; } 
-        public string Username { get; }
-        public string Repository { get; }
-        public string FullyQualifiedName { get; }
+        public string Path { get; set; }
+        public string Username { get; set; }
+        public string Repository { get; set; }
+        public string FullyQualifiedName { get; set; }
         public string DisplayName
         {
             get
@@ -31,9 +31,9 @@ namespace SourceBrowser.Search.ViewModels
                 return splitName.Last();
             }
         }
-        public int LineNumber { get; }
+        public int LineNumber { get; set; }
 
-        public TokenViewModel(string username, string repository, string path, string fullName, int lineNumber)
+        public TokenViewModel(string username, string repository, string path, string fullName, int lineNumber):this()
         {
             Id = username + "/" + repository + "/" + fullName;
             Username = username;

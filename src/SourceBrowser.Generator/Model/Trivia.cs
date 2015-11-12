@@ -8,8 +8,8 @@ namespace SourceBrowser.Generator.Model
 {
     public class Trivia
     {
-        public string Type { get; }
-        public string Value { get; }
+        public string Type { get; set; }
+        public string Value { get; set; }
         public Trivia(string value, string type)
         {
             Value = value;

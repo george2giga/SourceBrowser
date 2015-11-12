@@ -157,7 +157,7 @@ namespace SourceBrowser.Generator.DocumentWalkers
                 tokenModel = tokenModel.WithLink(link);
             }
             //Otherwise, we try to link to the .Net Reference source
-            else if (_refsourceLinkProvider.Assemblies.Contains(symbol.ContainingAssembly?.Identity?.Name)
+            else if (_refsourceLinkProvider.Assemblies.Contains(symbol.ContainingAssembly.Identity.Name)
                 && !(symbol is INamespaceSymbol))
             {
                 var link = new UrlLink(url: _refsourceLinkProvider.GetLink(symbol));

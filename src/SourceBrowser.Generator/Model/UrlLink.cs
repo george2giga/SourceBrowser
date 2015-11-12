@@ -8,7 +8,7 @@ namespace SourceBrowser.Generator.Model
 {
     public class UrlLink : ILink
     {
-        public string Url { get; }
+        public string Url { get; set; }
 
         public string Link
         {

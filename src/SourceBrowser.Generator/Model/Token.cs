@@ -8,25 +8,25 @@ namespace SourceBrowser.Generator.Model
 {
     public class Token
     {
-        public string FullName { get; }
+        public string FullName { get; set; }
 
-        public string Type { get; }
+        public string Type { get; set; }
 
-        public int LineNumber { get; }
+        public int LineNumber { get; set; }
 
-        public ICollection<Trivia> LeadingTrivia { get; }
+        public ICollection<Trivia> LeadingTrivia { get; set; }
 
-        public string Value { get; }
+        public string Value { get; set; }
 
-        public ICollection<Trivia> TrailingTrivia { get; }
+        public ICollection<Trivia> TrailingTrivia { get; set; }
 
-        public ILink Link { get; }
+        public ILink Link { get; set; }
 
-        public bool IsDeclaration { get; }
+        public bool IsDeclaration { get; set; }
 
-        public bool IsSearchable { get; }
+        public bool IsSearchable { get; set; }
 
-        public DocumentModel Document { get; }
+        public DocumentModel Document { get; set; }
 
         public Token(DocumentModel document, string fullName, string value, string type, int lineNumber, bool isDeclaration = false, bool isSearchable = false)
         {

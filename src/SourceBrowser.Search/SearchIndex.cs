@@ -123,10 +123,10 @@ namespace SourceBrowser.Search
         public static IEnumerable<TokenViewModel> SearchRepository(string username, string repository, string searchQuery)
         {
             if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException(nameof(username) + " must be provided.");
+                throw new ArgumentException(username + " must be provided.");
 
             if (string.IsNullOrWhiteSpace(repository))
-                throw new ArgumentException(nameof(repository) + " must be provided.");
+                throw new ArgumentException(repository + " must be provided.");
 
             //If they send an empty query, just return nothing.
             if (string.IsNullOrWhiteSpace(searchQuery))

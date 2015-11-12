@@ -14,29 +14,65 @@ namespace SourceBrowser.Generator.DocumentWalkers
             _walker = walker;
         }
 
-        public string IdentifierTokenTypeName { get; } = VisualBasicTokenTypes.IDENTIFIER;
+        public string IdentifierTokenTypeName
+        {
+            get { return VisualBasicTokenTypes.IDENTIFIER; }
+        }
 
-        public string KeywordTokenTypeName { get; } = VisualBasicTokenTypes.KEYWORD;
+        public string KeywordTokenTypeName
+        {
+            get { return VisualBasicTokenTypes.KEYWORD; }
+        }
 
-        public string OtherTokenTypeName { get; } = VisualBasicTokenTypes.OTHER;
+        public string OtherTokenTypeName
+        {
+            get { return VisualBasicTokenTypes.OTHER; }
+        }
 
-        public string StringTokenTypeName { get; } = VisualBasicTokenTypes.STRING;
+        public string StringTokenTypeName
+        {
+            get { return VisualBasicTokenTypes.STRING; }
+        }
 
-        public string TypeTokenTypeName { get; } = VisualBasicTokenTypes.TYPE;
+        public string TypeTokenTypeName
+        {
+            get { return VisualBasicTokenTypes.TYPE; }
+        }
 
-        public string ParameterDelimiter { get; } = VBDelimiters.PARAMETER;
+        public string ParameterDelimiter
+        {
+            get { return VBDelimiters.PARAMETER; }
+        }
 
-        public string LocalVariableDelimiter { get; } = VBDelimiters.LOCAL_VARIABLE;
+        public string LocalVariableDelimiter
+        {
+            get { return VBDelimiters.LOCAL_VARIABLE; }
+        }
 
 
-        public string GetFullName(SyntaxToken token) => token.CSharpKind().ToString();
+        public string GetFullName(SyntaxToken token)
+        {
+            return token.CSharpKind().ToString();
+        }
 
-        public bool IsIdentifier(SyntaxToken token) => token.VBKind() == SyntaxKind.IdentifierToken;
+        public bool IsIdentifier(SyntaxToken token)
+        {
+            return token.VBKind() == SyntaxKind.IdentifierToken;
+        }
 
-        public bool IsKeyword(SyntaxToken token) => token.IsKeyword();
+        public bool IsKeyword(SyntaxToken token)
+        {
+            return token.IsKeyword();
+        }
 
-        public bool IsLiteral(SyntaxToken token) => token.VBKind() == SyntaxKind.StringLiteralToken;
+        public bool IsLiteral(SyntaxToken token)
+        {
+            return token.VBKind() == SyntaxKind.StringLiteralToken;
+        }
 
-        public override void VisitToken(SyntaxToken token) => _walker.VisitToken(token);
+        public override void VisitToken(SyntaxToken token)
+        {
+            _walker.VisitToken(token);
+        }
     }
 }

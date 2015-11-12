@@ -4,7 +4,7 @@ using SourceBrowser.Generator.Model.CSharp;
 
 namespace SourceBrowser.Generator.DocumentWalkers
 {
-    class CSWalkerUtils : CSharpSyntaxWalker, IWalkerUtils
+    internal class CSWalkerUtils : CSharpSyntaxWalker, IWalkerUtils
     {
         private readonly DocumentWalker<CSWalkerUtils> _walker;
 
@@ -14,29 +14,65 @@ namespace SourceBrowser.Generator.DocumentWalkers
             _walker = walker;
         }
 
-        public string IdentifierTokenTypeName {  get; } = CSharpTokenTypes.IDENTIFIER;
+        public string IdentifierTokenTypeName
+        {
+            get { return CSharpTokenTypes.IDENTIFIER; }
+        }
 
-        public string KeywordTokenTypeName { get; } = CSharpTokenTypes.KEYWORD;
+        public string KeywordTokenTypeName
+        {
+            get { return CSharpTokenTypes.KEYWORD; }
+        }
 
-        public string OtherTokenTypeName { get; } = CSharpTokenTypes.OTHER;
+        public string OtherTokenTypeName
+        {
+            get { return CSharpTokenTypes.OTHER; }
+        }
 
-        public string StringTokenTypeName { get; } = CSharpTokenTypes.STRING;
+        public string StringTokenTypeName
+        {
+            get { return CSharpTokenTypes.STRING; }
+        }
 
-        public string TypeTokenTypeName { get; } = CSharpTokenTypes.TYPE;
+        public string TypeTokenTypeName
+        {
+            get { return CSharpTokenTypes.TYPE; }
+        }
 
-        public string ParameterDelimiter { get; } = CSharpDelimiters.PARAMETER;
+        public string ParameterDelimiter
+        {
+            get { return CSharpDelimiters.PARAMETER; }
+        }
 
-        public string LocalVariableDelimiter { get; } = CSharpDelimiters.LOCAL_VARIABLE;
+        public string LocalVariableDelimiter
+        {
+            get { return CSharpDelimiters.LOCAL_VARIABLE; }
+        }
 
 
-        public string GetFullName(SyntaxToken token) => token.CSharpKind().ToString();
+        public string GetFullName(SyntaxToken token)
+        {
+            return token.CSharpKind().ToString();
+        }
 
-        public bool IsIdentifier(SyntaxToken token) => token.CSharpKind() == SyntaxKind.IdentifierToken;
+        public bool IsIdentifier(SyntaxToken token)
+        {
+            return token.CSharpKind() == SyntaxKind.IdentifierToken;
+        }
 
-        public bool IsKeyword(SyntaxToken token) => token.IsKeyword();
+        public bool IsKeyword(SyntaxToken token)
+        {
+            return token.IsKeyword();
+        }
 
-        public bool IsLiteral(SyntaxToken token) => token.CSharpKind() == SyntaxKind.StringLiteralToken;
+        public bool IsLiteral(SyntaxToken token)
+        {
+            return token.CSharpKind() == SyntaxKind.StringLiteralToken;
+        }
 
-        public override void VisitToken(SyntaxToken token) => _walker.VisitToken(token);
+        public override void VisitToken(SyntaxToken token)
+        {
+            _walker.VisitToken(token);
+        }
     }
 }
