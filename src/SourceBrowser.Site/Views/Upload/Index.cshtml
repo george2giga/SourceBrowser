@@ -16,7 +16,7 @@
         <h5 style="color:red">@ViewBag.Error</h5>
     }
 </div>
-@using (Html.BeginForm("Submit", "Git", FormMethod.Post, new { style = "margin: 0px 0px 150px 0px", role = "form", @class="bs-example bs-example-form" }))
+@using (Html.BeginForm("Submit", "Upload", FormMethod.Post, new { style = "margin: 0px 0px 150px 0px", role = "form", @class="bs-example bs-example-form" }))
 {
     @Html.AntiForgeryToken()
     @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@

@@ -47,19 +47,20 @@
                                             <h4>@repo.Name</h4>
                                         </div>
                                         <div class="col-xs-4">
-												<p class="match-h-margin">
-													@repo.UploadTime.ToShortDateString()
-												</p>
+                                            <p class="match-h-margin">
+                                                @repo.UploadTime.ToShortDateString()
+                                            </p>
                                         </div>
                                     </div>
-                                    
+
                                     @*<p>@repo.description</p>
 
-                                    @if (!String.IsNullOrEmpty(repo.homepage))
-                                    {
-                                        <p class="minor">@repo.homepage</p>
-                                    }*@
+            @if (!String.IsNullOrEmpty(repo.homepage))
+            {
+                <p class="minor">@repo.homepage</p>
+            }*@
                                 </a>
+                                
                             </li>
                         }
                     </ul>

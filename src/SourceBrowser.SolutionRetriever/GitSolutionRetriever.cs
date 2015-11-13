@@ -4,7 +4,7 @@ using LibGit2Sharp;
 
 namespace SourceBrowser.SolutionRetriever
 {
-    public class GitRetriever
+    public class GitSolutionRetriever
     {
         private string _url;
         private Guid guid = Guid.NewGuid();
@@ -12,7 +12,7 @@ namespace SourceBrowser.SolutionRetriever
         public string UserName { get; set; }
         public string RepoName { get; set; }
 
-        public GitRetriever(string url)
+        public GitSolutionRetriever(string url)
         {
             if (!(url.StartsWith("https://") || url.StartsWith("http://")))
                 url = "https://" + url;
@@ -36,7 +36,7 @@ namespace SourceBrowser.SolutionRetriever
             return true;
         }
 
-        public string RetrieveProject()
+        public string RetrieveProject(string username, string password)
         {
             string baseRepositoryPath = Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/"),"GithubStaging");
 
@@ -48,10 +48,21 @@ namespace SourceBrowser.SolutionRetriever
                 DeleteReadOnlyDirectory(_absoluteRepositoryPath);
             }
             Directory.CreateDirectory(_absoluteRepositoryPath);
+            CloneOptions cloneOptions = new CloneOptions();
+            cloneOptions.CredentialsProvider = (url, fromUrl, types) => new UsernamePasswordCredentials()
+            {
+                Username = username,
+                Password = password
+            };
 
-            Repository.Clone(_url, _absoluteRepositoryPath);
+            Repository.Clone(_url, _absoluteRepositoryPath, cloneOptions);
             return _absoluteRepositoryPath;
         }
+
+
+
+
+
 
         /// <summary>
         /// Recursively deletes a directory as well as any subdirectories and files. If the files are read-only, they are flagged as normal and then deleted.

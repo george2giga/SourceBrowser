@@ -10,7 +10,7 @@ namespace SourceBrowser.Site.Controllers
     using System;
     using System.Linq;
 
-    public class GitController : Controller
+    public class UploadController : Controller
     {
         // GET: Upload
         public ActionResult Index()
@@ -31,7 +31,7 @@ namespace SourceBrowser.Site.Controllers
                 return View("Index");
             }
 
-            var retriever = new StashSolutionRetriever(model.RepositoryUrl);
+            var retriever = new GitSolutionRetriever(model.RepositoryUrl);
             if (!retriever.IsValidUrl())
             {
                 ViewBag.Error = "Make sure that the provided path points to a valid Git repository.";
@@ -121,6 +121,8 @@ namespace SourceBrowser.Site.Controllers
                 if (processingSuccessful)
                 {
                     BrowserRepository.UnlockRepository(retriever.UserName, retriever.RepoName);
+                    //remove repository from file system
+                    BrowserRepository.RemoveRepository(retriever.UserName, retriever.RepoName);
                 }
                 else
                 {
