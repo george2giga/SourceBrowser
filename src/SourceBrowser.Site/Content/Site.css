@@ -19,13 +19,14 @@
 
 .sb-jumbotron
 {
-    /*background-color: #7f34a9;*/
-    background-color: #FFCD11;
+    background-color: #7f34a9;
+    /*background-color: #FFCD11;*/
 }
 
 .sb-jumbotron .lead
 {
-    color: black;
+    /*color: black;*/
+    color: #fdf;
     font-size: large;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -33,7 +34,8 @@
 
 .sb-jumbotron h1
 {
-    color: black;
+    /*color: black;*/
+    color: #fff;
     font-weight: normal;
 }
 

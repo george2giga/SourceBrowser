@@ -266,13 +266,13 @@
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\dialog.css" />
     <Content Include="Content\draggable.css" />
-    <Content Include="Content\logo.png" />
+    <Content Include="Content\logo_yellow.png" />
     <Content Include="Content\images\csharp_black_purple_avatar.jpg" />
     <Content Include="Content\images\csharp_blue_avatar.jpg" />
     <Content Include="Content\images\csharp_purple_avatar.png" />
     <Content Include="Content\images\c_sharp_plain_avatar.png" />
     <Content Include="Content\images\visual_studio_avatar.jpg" />
-    <Content Include="Content\logo_old.png">
+    <Content Include="Content\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\menu.css" />
