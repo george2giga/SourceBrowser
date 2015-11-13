@@ -56,9 +56,10 @@ namespace SourceBrowser.Site.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Error = ex.Message.Contains("401") ? "Unauthorized. Have you tried with credentials?" : "There was an error downloading this repository.";
+                    //ViewBag.Error = ex.Message.Contains("401") ? "Unauthorized. Have you tried with credentials?" : "There was an error downloading this repository.";
 
-                    return View("Index");
+                    //return View("Index");
+                    throw;
                 }
 
                 // Generate the source browser files for this solution
@@ -123,7 +124,7 @@ namespace SourceBrowser.Site.Controllers
                 {
                     BrowserRepository.UnlockRepository(retriever.UserName, retriever.RepoName);
                     //remove repository from file system
-                    BrowserRepository.RemoveRepository(retriever.UserName, retriever.RepoName);
+                    //BrowserRepository.RemoveRepository(retriever.UserName, retriever.RepoName);
                 }
                 else
                 {
