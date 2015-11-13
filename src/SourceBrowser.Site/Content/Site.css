@@ -87,3 +87,11 @@
     float: left;
     display: inline-block;
 }
+
+/** chkbox credentials required**/
+
+.input-group .chkCredentials 
+{
+    margin-left: 5px;
+    margin-bottom: 5px;    
+}

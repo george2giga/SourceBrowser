@@ -31,19 +31,30 @@
     </div>
     <br />
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        <h4>Need credentials?</h4>
+        <h4>Need credentials? @Html.CheckBoxFor(x => x.NeedCredentials, new { @class = "chkCredentials", id = "needCredentials" })</h4>
     </div>
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "username" })
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", placeholder = "username", id="username", @readonly = true})
         <br />
         @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
     </div>
     <div style="margin: 0 auto; max-width: 1000px;" class="input-group input-group-lg">
-        @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "password" })
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "password", id = "password", @readonly = true })
+        <br />
         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
     </div>
+  
 }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#needCredentials').change(function () {
+                var isChecked = $(this).is(':checked');
+                $('#username').prop('readonly', !isChecked);
+                $('#password').prop('readonly', !isChecked);
+            });
+        });
+    </script>
 }

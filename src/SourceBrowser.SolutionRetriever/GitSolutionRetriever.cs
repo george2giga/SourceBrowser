@@ -48,14 +48,24 @@ namespace SourceBrowser.SolutionRetriever
                 DeleteReadOnlyDirectory(_absoluteRepositoryPath);
             }
             Directory.CreateDirectory(_absoluteRepositoryPath);
-            CloneOptions cloneOptions = new CloneOptions();
-            cloneOptions.CredentialsProvider = (url, fromUrl, types) => new UsernamePasswordCredentials()
-            {
-                Username = username,
-                Password = password
-            };
 
-            Repository.Clone(_url, _absoluteRepositoryPath, cloneOptions);
+            //credentials provided
+            if (!string.IsNullOrEmpty(username) || !string.IsNullOrEmpty(password))
+            {
+                CloneOptions cloneOptions = new CloneOptions();
+                cloneOptions.CredentialsProvider = (url, fromUrl, types) => new UsernamePasswordCredentials()
+                {
+                    Username = username,
+                    Password = password
+                };
+                Repository.Clone(_url, _absoluteRepositoryPath, cloneOptions);
+            }
+            else
+            {
+                //no credentials
+                Repository.Clone(_url, _absoluteRepositoryPath);    
+            }
+            
             return _absoluteRepositoryPath;
         }
 

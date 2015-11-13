@@ -8,13 +8,16 @@ namespace SourceBrowser.Site.Models
         [Display(Name = "Repository")]
         public string RepositoryUrl { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required]
+        //[Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+
+        public bool NeedCredentials { get; set; }
     }
 }

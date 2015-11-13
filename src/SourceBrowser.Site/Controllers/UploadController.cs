@@ -56,7 +56,8 @@ namespace SourceBrowser.Site.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Error = "There was an error downloading this repository.";
+                    ViewBag.Error = ex.Message.Contains("401") ? "Unauthorized. Have you tried with credentials?" : "There was an error downloading this repository.";
+
                     return View("Index");
                 }
 
