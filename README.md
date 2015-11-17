@@ -3,8 +3,16 @@ SourceBrowser.Generator
 
 C# in. HTML out.
 
-Demo: [sourcebrowser.io/Browse/CodeConnect/SourceBrowser/](http://sourcebrowser.io/Browse/CodeConnect/SourceBrowser/)
+Base project demo: [sourcebrowser.io/Browse/CodeConnect/SourceBrowser/](http://sourcebrowser.io/Browse/CodeConnect/SourceBrowser/)
 
+_What is this fork about?_
+
+This is a "generic" version of the SourceBrowser project, main changes:
+*   No Github calls to retrieve User and Repo data (forks, stars etc).
+*   C# avatar image is used for users/organizations.
+*   Supporting Git credentials for private repositories.
+*   Works with different Git servers (tested with GitHub and Atlassian Stash).
+*   Navigation fixed, now working with virtual directories too.
 
 _What is it?_
 
